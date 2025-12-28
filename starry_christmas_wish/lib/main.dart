@@ -84,15 +84,13 @@ class _ChristmasScreenState extends State<ChristmasScreen>
     }
 
     // Continuous snow
-    if (_snowTimer == null) {
-      _snowTimer = Timer.periodic(const Duration(milliseconds: 300), (_) {
+    _snowTimer ??= Timer.periodic(const Duration(milliseconds: 300), (_) {
         if (mounted) {
           setState(() {
             _snowflakes.add(Snowflake.generate(_random, _screenSize));
           });
         }
       });
-    }
 
     // Cleanup old burst stars
     Timer.periodic(const Duration(seconds: 1), (_) {
@@ -110,10 +108,10 @@ class _ChristmasScreenState extends State<ChristmasScreen>
   void _onTapDown(TapDownDetails details) {
     setState(() {
       final tapPos = details.localPosition;
-      for (int i = 0; i < 20; i++) {
+      for (int i = 0; i < 15; i++) {
         _stars.add(Star.generateBurst(_random, _screenSize, tapPos));
       }
-      for (int i = 0; i < 30; i++) {
+      for (int i = 0; i < 25; i++) {
         _snowflakes.add(Snowflake.generate(_random, _screenSize));
       }
     });
@@ -172,7 +170,7 @@ class _ChristmasScreenState extends State<ChristmasScreen>
                       return Transform.translate(
                         offset: Offset(0, _bounceAnimation.value),
                         child: AnimatedScale(
-                          scale: _showSmile ? 1.2 : 1.0,
+                          scale: _showSmile ? 1.15 : 1.0,
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.elasticOut,
                           child: Image.asset(
@@ -251,7 +249,7 @@ class _ChristmasScreenState extends State<ChristmasScreen>
                       return Transform.translate(
                         offset: Offset(0, _bounceAnimation.value),
                         child: AnimatedScale(
-                          scale: _showSmile ? 1.2 : 1.0,
+                          scale: _showSmile ? 1.15 : 1.0,
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.elasticOut,
                           child: Image.asset(
