@@ -126,29 +126,6 @@ class _ChristmasScreenState extends State<ChristmasScreen>
     super.dispose();
   }
 
-  // Reusable bouncing Santa
-  Widget _buildSanta({double width = 160, double height = 160}) {
-    return AnimatedBuilder(
-      animation: _bounceAnimation,
-      builder: (_, __) {
-        return Transform.translate(
-          offset: Offset(0, _bounceAnimation.value),
-          child: AnimatedScale(
-            scale: _showSmile ? 1.2 : 1.0,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.elasticOut,
-            child: Image.asset(
-              'assets/images/santa.png',
-              width: width,
-              height: height,
-              fit: BoxFit.contain,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     _screenSize = MediaQuery.of(context).size;
