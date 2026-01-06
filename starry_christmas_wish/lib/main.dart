@@ -85,12 +85,12 @@ class _ChristmasScreenState extends State<ChristmasScreen>
 
     // Continuous snow
     _snowTimer ??= Timer.periodic(const Duration(milliseconds: 300), (_) {
-        if (mounted) {
-          setState(() {
-            _snowflakes.add(Snowflake.generate(_random, _screenSize));
-          });
-        }
-      });
+      if (mounted) {
+        setState(() {
+          _snowflakes.add(Snowflake.generate(_random, _screenSize));
+        });
+      }
+    });
 
     // Cleanup old burst stars
     Timer.periodic(const Duration(seconds: 1), (_) {
@@ -208,7 +208,7 @@ class _ChristmasScreenState extends State<ChristmasScreen>
 
                     // Big glowing name only
                     Text(
-                      'Tsion Nadew!',
+                      'Full Name!',
                       style: GoogleFonts.dancingScript(
                         fontSize: 80,
                         color: Colors.white,
@@ -254,8 +254,8 @@ class _ChristmasScreenState extends State<ChristmasScreen>
                           curve: Curves.elasticOut,
                           child: Image.asset(
                             'assets/santa.png',
-                            width: 300,
-                            height: 300,
+                            width: 250,
+                            height: 250,
                             fit: BoxFit.contain,
                           ),
                         ),
